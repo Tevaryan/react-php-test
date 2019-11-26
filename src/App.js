@@ -24,16 +24,18 @@ class App extends Component {
     e.preventDefault();
     axios({
       method: 'post',
-      url: 'http://localhost:8080/api/index.php',
+      url: 'http://localhost:8081/api/index.php',
       headers: { 'content-type': 'application/json' },
       withCredentials: false,
       data: this.state
     })
       .then(result => {
+        console.log(result)
         this.setState({
           mailSent: result.data.sent
-        })
 
+        })
+        console.log(this.state.mailSent)
       })
       .catch(error => this.setState({ error: error.message }));
 
